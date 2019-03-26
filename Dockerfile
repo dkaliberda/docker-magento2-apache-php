@@ -43,7 +43,7 @@ RUN usermod -u 1000 www-data; \
   php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer; \
 	rm /tmp/composer-setup.php; \
   chmod +x /usr/local/bin/composer; \
-  curl -o n98-magerun2.phar http://files.magerun.net/n98-magerun2-latest.phar; \
+  curl -o n98-magerun2.phar https://files.magerun.net/n98-magerun2.phar; \
   chmod +x ./n98-magerun2.phar; \
   chmod +x /start.sh; \
   chmod +r /credis.php; \
