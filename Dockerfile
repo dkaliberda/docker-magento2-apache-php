@@ -9,8 +9,11 @@ RUN apt-get update \
     libmcrypt-dev \
     libpng-dev \
     libxslt1-dev \
+    librabbitmq-dev \
+    libssh-dev \
     git \
     vim \
+    unzip \
     wget \
     lynx \
     psmisc \
@@ -27,7 +30,10 @@ RUN docker-php-ext-configure \
     zip \
     opcache \
     bcmath \
-    soap
+    soap \
+    sockets \
+  && pecl install amqp \
+  && docker-php-ext-enable amqp
 
 ADD https://raw.githubusercontent.com/colinmollenhour/credis/master/Client.php /credis.php
 ADD php.ini /usr/local/etc/php/conf.d/888-fballiano.ini
