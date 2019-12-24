@@ -52,6 +52,8 @@ RUN usermod -u 1000 www-data; \
   chmod +x /usr/local/bin/composer; \
   curl -o n98-magerun2.phar https://files.magerun.net/n98-magerun2.phar; \
   chmod +x ./n98-magerun2.phar; \
+  chmod +x /register-host-on-redis.sh; \
+  chmod +x /unregister-host-on-redis.sh; \
   chmod +x /start.sh; \
   mv n98-magerun2.phar /usr/local/bin/; \
   mkdir -p /root/.composer
