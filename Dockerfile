@@ -17,6 +17,7 @@ RUN apt-get update \
     wget \
     lynx \
     psmisc \
+    redis-tools \
   && apt-get clean
 
 RUN docker-php-ext-configure \
@@ -35,10 +36,9 @@ RUN docker-php-ext-configure \
   && pecl install amqp \
   && docker-php-ext-enable amqp
 
-ADD https://raw.githubusercontent.com/colinmollenhour/credis/master/Client.php /credis.php
 ADD php.ini /usr/local/etc/php/conf.d/888-fballiano.ini
-ADD register-host-on-redis.php /register-host-on-redis.php
-ADD unregister-host-on-redis.php /unregister-host-on-redis.php
+ADD register-host-on-redis.sh /register-host-on-redis.sh
+ADD unregister-host-on-redis.sh /unregister-host-on-redis.sh
 ADD start.sh /start.sh
 
 RUN usermod -u 1000 www-data; \
@@ -53,7 +53,6 @@ RUN usermod -u 1000 www-data; \
   curl -o n98-magerun2.phar https://files.magerun.net/n98-magerun2.phar; \
   chmod +x ./n98-magerun2.phar; \
   chmod +x /start.sh; \
-  chmod +r /credis.php; \
   mv n98-magerun2.phar /usr/local/bin/; \
   mkdir -p /root/.composer
 
