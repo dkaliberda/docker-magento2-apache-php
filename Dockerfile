@@ -58,4 +58,4 @@ RUN usermod -u 1000 www-data; \
   mv n98-magerun2.phar /usr/local/bin/; \
   mkdir -p /root/.composer
 
-CMD ["/start.sh"]
+ENTRYPOINT ["/start.sh"]
